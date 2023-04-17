@@ -1,11 +1,28 @@
 import React from 'react';
 
 export default function ShippingOrder({ shippingOrder }) {
+  console.info(shippingOrder.shippingOrderStatus);
   return (
     <div>
       <div className="container">
         <div className="text-start fs-3">Shipping Order</div>
         <p></p>
+        <div className="card border border-3">
+          <div className="card-header text-start fs-5">
+            Shipping Order Progress
+          </div>
+          <div className="card-body">
+            <div className="row g-3">
+              <div className="col-md-12">
+                <img
+                  src={'/images/' + shippingOrder.shippingOrderStatus + '.png'}
+                  alt="Order Progress"
+                  style={{ maxWidth: '100%', width: 'auto' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="card border border-3">
           <div className="card-header text-start fs-5">Shipping Details</div>
           <div className="card-body">
@@ -363,7 +380,7 @@ export default function ShippingOrder({ shippingOrder }) {
                   </span>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
                     <span className="input-group-text" name="basic-addon1">
@@ -375,7 +392,7 @@ export default function ShippingOrder({ shippingOrder }) {
                   </span>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <div className="input-group mb-3">
                   <div className="input-group-prepend">
                     <span className="input-group-text" name="basic-addon1">
@@ -384,6 +401,14 @@ export default function ShippingOrder({ shippingOrder }) {
                   </div>
                   <span className="input-group-text" name="basic-addon1">
                     {shippingOrder.options.destinationPort}
+                  </span>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="input-group mb-3">
+                  <span className="input-group-text" name="basic-addon1">
+                    Payment Term ::{' '}
+                    {shippingOrder.paymentTerm && shippingOrder.paymentTerm}
                   </span>
                 </div>
               </div>

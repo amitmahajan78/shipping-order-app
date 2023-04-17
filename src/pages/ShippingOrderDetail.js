@@ -36,7 +36,13 @@ export const GET_SHIPPING_ORDER_DETAIL = gql`
       customerContactPhone
       purchaseOrderNumber
       shippingOption
+      paymentTerm
       updateAt
+      shippingOrderStatuses {
+        status
+        message
+        createdAt
+      }
       shippingSourceAddress {
         name
         line

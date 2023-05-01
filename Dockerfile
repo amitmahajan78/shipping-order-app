@@ -10,4 +10,4 @@ RUN npm install -g serve
 
 EXPOSE 3000
 # Start the app
-CMD [ "yarm", "prod" ]
+CMD [ "npm", "run", "prod" ]

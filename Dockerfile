@@ -6,7 +6,7 @@ WORKDIR /app
 # Copy app files
 COPY . .
 # ==== RUN =======
-RUN npm install -g serve
+RUN npm install
 
 EXPOSE 3000
 # Start the app

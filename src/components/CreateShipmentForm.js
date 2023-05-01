@@ -41,6 +41,15 @@ export default function CreateShipmentForm({ method, event }) {
                     name="customerName"
                     required
                   />
+
+                  {/* <input
+                    type="hidden"
+                    className="form-control"
+                    placeholder="token"
+                    name="token"
+                    value={getAccessTokenSilently}
+                    required
+                  /> */}
                 </div>
               </div>
               <div className="col-md-6">
@@ -688,13 +697,29 @@ export async function action({ request, params }) {
     },
   }; */
 
+  const authBody = {
+    client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
+    client_secret: process.env.REACT_APP_AUTH0_CLIENT_SECRET,
+    audience: 'http://logistics/resource/app',
+    grant_type: 'client_credentials',
+  };
+
+  const authResponse = await fetch(process.env.REACT_APP_AUTH0_DOMAIN, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(authBody),
+  });
+  const authData = await authResponse.json();
+
   let url = process.env.REACT_APP_SERVICE_API_URL + 'shipping_order';
-  console.log('creating actions');
+  console.log('creating actions :: ' + data.get('token'));
   const response = await fetch(url, {
     method: method,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + process.env.REACT_APP_SERVICE_API_TOKEN,
+      Authorization: 'Bearer ' + authData.access_token, //process.env.REACT_APP_SERVICE_API_TOKEN,
     },
     body: JSON.stringify(shipmentOrder),
   });

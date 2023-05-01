@@ -13,6 +13,8 @@ export default function ShippingOrderSearchPage() {
     customerContactEmail: customerContactEmail,
     purchaseOrderNumber: purchaseOrderNumber,
   };
+
+  console.log('URL: ' + process.env.REACT_APP_GRAPHQL_ROUTER_URL);
   const handleClick = () => {
     if (
       (customerName && customerName.length > 0) ||

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { json, Link } from 'react-router-dom';
+import env from 'react-dotenv';
 
 export default function ShippingOrderSearchPage() {
   const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ export default function ShippingOrderSearchPage() {
     purchaseOrderNumber: purchaseOrderNumber,
   };
 
-  console.log('URL: ' + process.env.REACT_APP_GRAPHQL_ROUTER_URL);
+  console.log('URL: ' + env.REACT_APP_GRAPHQL_ROUTER_URL);
   const handleClick = () => {
     if (
       (customerName && customerName.length > 0) ||

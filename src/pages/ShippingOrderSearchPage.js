@@ -14,8 +14,6 @@ export default function ShippingOrderSearchPage() {
     purchaseOrderNumber: purchaseOrderNumber,
   };
 
-  console.log('URL: ' + process.env.REACT_APP_GRAPHQL_ROUTER_URL);
-  console.log('Secret: ' + process.env.REACT_APP_AUTH0_DOMAIN);
   const handleClick = () => {
     if (
       (customerName && customerName.length > 0) ||

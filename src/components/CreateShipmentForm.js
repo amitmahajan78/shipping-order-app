@@ -714,7 +714,6 @@ export async function action({ request, params }) {
   const authData = await authResponse.json();
 
   let url = process.env.REACT_APP_SERVICE_API_URL + 'shipping_order';
-  console.log('creating actions :: ' + data.get('token'));
   const response = await fetch(url, {
     method: method,
     headers: {
